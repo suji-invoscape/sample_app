@@ -31,6 +31,8 @@ describe "signup" do
     end
 
     describe "with valid information" do
+     describe "after saving the user" do
+
       before do
         fill_in "Name",         with: "Example User"
         fill_in "Email",        with: "user@example.com"
@@ -38,10 +40,16 @@ describe "signup" do
         fill_in "Confirmation", with: "foobar"
       end
 
+ 
       it "should create a user" do
+
         expect { click_button submit }.to change(User, :count).by(1)
+        should have_link('Sign out')
       end
+
+      
     end
   end
+end
 end
 end
